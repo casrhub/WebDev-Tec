@@ -1,12 +1,24 @@
-<link rel="stylesheet" href="/index.css">
-<script type="text/javascript" src="index.js"></script>
-<h1>
-    Mi primera App
-</h1>
-<p>
-    Instrucciones
-</p>
-<input type = "text">
-<button onclick=miFuncion()>
-    Definir
-</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primera App</title>
+    <link rel="stylesheet" href="/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    
+
+</head>
+<body>
+    <div class="mainBox">
+        <h2>Want to know detailed infomration about SpaceX rocket launches?</h2>
+        <p>Instrucciones</p>
+        <input type="text" id="rocketIdInput">
+        <button onclick="useSpaceXandOpenAI()">
+            Definir
+        </button>
+    </div>
+   
+</body>
+</html>
