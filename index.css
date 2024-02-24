@@ -23,4 +23,17 @@ body {
     background-color:rgb(255, 242, 0);
 }
 
+@keyframes rotateImage {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .rotating-image {
+    animation: rotateImage 2s linear infinite;
+  }
+  
 
