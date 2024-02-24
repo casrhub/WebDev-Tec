@@ -5,7 +5,7 @@ function openAICall(rocketDescription, rocketCost, rocketName, successRate, rock
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': '<openaikey>' // Make sure to use your actual OpenAI API Key here and keep it secure
+            'Authorization': '<openaikey>' //use your key :(
         },
         body: JSON.stringify({ 
             model: 'gpt-3.5-turbo', 
@@ -23,9 +23,9 @@ function openAICall(rocketDescription, rocketCost, rocketName, successRate, rock
         }
     ).then(
         function(data) {
-            // Extract the content from the response and update the HTML element
-            const content = data.choices[0].message.content; // Make sure this path matches the structure of the response
-            document.getElementById('yourElementId').innerHTML = content; // Ensure 'yourElementId' is the ID of the HTML element you want to update
+            
+            const content = data.choices[0].message.content; 
+            document.getElementById('yourElementId').innerHTML = content; 
         }
     ).catch(
         function(error) {
