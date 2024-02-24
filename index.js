@@ -1,34 +1,38 @@
-function openAICall( rocketDescription, rocketCost, rocketName, succsesRate, rocketHeight, rocketMass, rocketInWikipedia ){
+
+function openAICall(rocketDescription, rocketCost, rocketName, successRate, rocketHeight, rocketMass, rocketInWikipedia) {
     const OpenAiEndpoint = "https://api.openai.com/v1/chat/completions";
     const opciones = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json','Authorization': 'Bearer  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' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': '<openaikey>' // Make sure to use your actual OpenAI API Key here and keep it secure
+        },
         body: JSON.stringify({ 
             model: 'gpt-3.5-turbo', 
-            messages: [{"role": "user", "content": `Your roll is to provide insightful infromation 
-            for rocket launches at SpaceX please provide concise infromation with the given rocket description: 
-            ${rocketDescription}, rocket name: ${rocketName}, rocketCost: ${rocketCost}, rocketHeight: ${rocketHeight},
-            rocketMass: ${rocketMass}, finally make a refelection on the succses rate: ${succsesRate} and provide the link to 
-            the wikipedia article: ${rocketInWikipedia}
-            `}] })
+            messages: [{"role": "user", "content": `Your role is to provide insightful information 
+            for rocket launches at SpaceX. Please provide concise information with the given rocket description: 
+            ${rocketDescription}, rocket name: ${rocketName}, rocket cost: ${rocketCost}, rocket height: ${rocketHeight},
+            rocket mass: ${rocketMass}, finally make a reflection on the success rate: ${successRate} and provide the link to 
+            the Wikipedia article: ${rocketInWikipedia}
+            `}] 
+        })
     };
-    fetch(OpenAiEndpoint,opciones).then(
-        function(response){
-            // pelamos la mandarina (procesamos JSON)
-            return response.json();
+    fetch(OpenAiEndpoint, opciones).then(
+        function(response) {
+            return response.json(); // Parse the JSON from the response
         }
-    ).then (
-        // Entregamos la mandarina pelada 
-        function (j){
-            console.log(j.choices[0].message.content)
-            document.getElementById('yourElementId').innerHTML = content;
+    ).then(
+        function(data) {
+            // Extract the content from the response and update the HTML element
+            const content = data.choices[0].message.content; // Make sure this path matches the structure of the response
+            document.getElementById('yourElementId').innerHTML = content; // Ensure 'yourElementId' is the ID of the HTML element you want to update
         }
-    )
+    ).catch(
+        function(error) {
+            console.error('Error:', error);
+        }
+    );
 }
-
- 
-
-
 
 async function useSpaceXandOpenAI(){
     const rocketId = document.getElementById('rocketIdInput').value;
@@ -51,9 +55,3 @@ async function useSpaceXandOpenAI(){
   });
 
 }
-
-
-  
-
-
-
