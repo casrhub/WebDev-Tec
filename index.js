@@ -5,7 +5,7 @@ function openAICall(rocketDescription, rocketCost, rocketName, successRate, rock
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': '<openaikey>' //use your key :(
+            'Authorization': 'Bearer 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' //use your key :(
         },
         body: JSON.stringify({ 
             model: 'gpt-3.5-turbo', 
